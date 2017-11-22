@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+
+    <context id="mybatisDemoForMysql" targetRuntime="MyBatis3">
+        <!-- 控制注释 -->
+        <commentGenerator>
+            <!-- 是否去除所有自动生成的注释文件 -->
+            <property name="suppressAllComments" value="true" />
+            <!-- 是否去除所有自动生成的文件的时间戳，默认为false -->
+            <property name="suppressDate" value="true" />
+        </commentGenerator>
+        <!-- 控制数据库 -->
+
+        <!--<jdbcConnection driverClass="com.microsoft.sqlserver.jdbc.SQLServerDriver"
+            connectionURL="jdbc:sqlserver://192.168.40.246:1433;databaseName=hrms" userId="sa"
+            password="Data40.195server" />-->
+        <!-- 	 <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+                    connectionURL="jdbc:mysql://localhost/shop?characterEncoding=utf8"
+                    userId="root" password="#honda.sundiro.com@wsd#" />  -->
+
+        <jdbcConnection driverClass="com.microsoft.sqlserver.jdbc.SQLServerDriver"
+                        connectionURL="jdbc:sqlserver://192.168.40.195:1433;databaseName=sdh" userId="sa"
+                        password="Data40.195server" />
+        <javaTypeResolver>
+            <!-- 把jdbc中的decimal与numberic类型转化为integer类型 -->
+            <property name="forceBigDecimals" value="false" />
+        </javaTypeResolver>
+        <!-- 数据库表对应的model -->
+        <javaModelGenerator targetPackage="com.supply.bean"
+                            targetProject="mybatisGenerator\src">
+            <property name="enableSubPackages" value="true" />
+            <property name="trimStrings" value="true" />
+        </javaModelGenerator>
+        <!-- 控制Model的xmlMapper文件 -->
+        <sqlMapGenerator targetPackage="com.supply.mapper"
+                         targetProject="mybatisGenerator\src">
+            <property name="enableSubPackages" value="true" />
+        </sqlMapGenerator>
+        <!-- 控制mapper接口 -->
+        <javaClientGenerator targetPackage="com.supply.mapper"
+                             type="XMLMAPPER" targetProject="mybatisGenerator\src">
+            <property name="enableSubPackages" value="true" />
+            <property name="methodNameCalculator" value="extended" />
+        </javaClientGenerator>
+        <!-- schema你的数据库，tableName表明，domainObjectName对应你的javabean类名，是否生成相应的example -->
+        <!-- <table schema="mybatis_db" tableName="visitor" domainObjectName="Visitor"
+            enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
+            enableSelectByExample="false" selectByExampleQueryId="false"> </table> -->
+
+        <!-- <table tableName='y_ad' domainObjectName='Ad' > </table> <table tableName='y_admin'
+            domainObjectName='Admin' > </table> <table tableName='y_age' domainObjectName='Age'
+            > </table> <table tableName='y_allbuy' domainObjectName='Allbuy' > </table>
+            <table tableName='y_allbuyhome' domainObjectName='Allbuyhome' > </table>
+            <table tableName='y_allbuyset' domainObjectName='Allbuyset' > </table> <table
+            tableName='y_allhouse' domainObjectName='Allhouse' > </table> <table tableName='y_coop'
+            domainObjectName='Coop' > </table> <table tableName='y_feedback' domainObjectName='Feedback'
+            > </table> <table tableName='y_geo' domainObjectName='Geo' > </table> <table
+            tableName='y_geosmall' domainObjectName='Geosmall' > </table> <table tableName='y_guestbook'
+            domainObjectName='Guestbook' > </table> <table tableName='y_home' domainObjectName='Home'
+            > </table> <table tableName='y_homeclass' domainObjectName='Homeclass' >
+            </table> <table tableName='y_homesort' domainObjectName='Homesort' > </table>
+            <table tableName='y_house' domainObjectName='House' > </table> <table tableName='y_houseabout'
+            domainObjectName='Houseabout' > </table> <table tableName='y_houseaboutsort'
+            domainObjectName='Houseaboutsort' > </table> <table tableName='y_houseauto'
+            domainObjectName='Houseauto' > </table> <table tableName='y_houseclass' domainObjectName='Houseclass'
+            > </table> <table tableName='y_housecom' domainObjectName='Housecom' > </table>
+            <table tableName='y_housedata' domainObjectName='Housedata' > </table> <table
+            tableName='y_housenews' domainObjectName='Housenews' > </table> <table tableName='y_houseset'
+            domainObjectName='Houseset' > </table> <table tableName='y_housesort' domainObjectName='Housesort'
+            > </table> <table tableName='y_housetxt' domainObjectName='Housetxt' > </table>
+            <table tableName='y_housetype' domainObjectName='Housetype' > </table> <table
+            tableName='y_indexflash' domainObjectName='Indexflash' > </table> <table
+            tableName='y_link' domainObjectName='Link' > </table> <table tableName='y_mode'
+            domainObjectName='Mode' > </table> <table tableName='y_newhouse' domainObjectName='Newhouse'
+            > </table> <table tableName='y_person' domainObjectName='Person' > </table>
+            <table tableName='y_pic' domainObjectName='Pic' > </table> <table tableName='y_picsort'
+            domainObjectName='Picsort' > </table> <table tableName='y_reply' domainObjectName='Reply'
+            > </table> <table tableName='y_room' domainObjectName='Room' > </table> <table
+            tableName='y_roomsort' domainObjectName='Roomsort' > </table> <table tableName='y_roomstate'
+            domainObjectName='Roomstate' > </table> <table tableName='y_state' domainObjectName='State'
+            > </table> <table tableName='y_vote' domainObjectName='Vote' > </table> <table
+            tableName='y_votenum' domainObjectName='Votenum' > </table> <table tableName='y_config'
+            domainObjectName='Config' > </table> <table tableName='y_area' domainObjectName='Area'
+            > </table> -->
+        <!-- 	<table tableName='%'>
+            </table> -->
+        <!-- <table tableName="honda_region"></table>
+        <table tableName="honda_agency"></table>
+                <table tableName="honda_agency_other"></table> -->
+        <table tableName="gsupply"></table>
+        <!-- <table tableName='sys_dictionaries'>
+        </table>
+        <table tableName='sys_gl_qx'>
+        </table>
+        <table tableName='sys_menu'>
+        </table>
+        <table tableName='sys_role'>
+        </table>
+        <table tableName='sys_user'>
+        </table>
+        <table tableName='sys_user_qx'>
+        </table>
+        <table tableName='tb_pictures'>
+        </table>
+        <table tableName='weixin_command'>
+        </table>
+
+        <table tableName='weixin_imgmsg'>
+        </table>
+        <table tableName='weixin_textmsg'> </table>-->
+
+    </context>
+</generatorConfiguration>
